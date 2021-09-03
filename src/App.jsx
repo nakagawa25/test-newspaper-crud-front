@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import NewsList from './components/NewsList'
 import './App.css';
+import AddNews from './components/AddNews';
 //import Home from './pages/Home';
 
 const App = () =>{
-  const [newsList, setTasks] = useState([
+  const [newsList, setNews] = useState([
     {
       id: "1",
       title: "Teste"
@@ -15,9 +16,22 @@ const App = () =>{
     }
   ]);
 
+  const handleNewsAddition = (newsTitle) => {
+    const newNews = [
+      ... newsList,
+      {
+        id: "5",
+        title: newsTitle
+      }
+    ]
+
+    setNews(newNews);
+  };
+
   return (
     <>
       <div className="container">
+        <AddNews handleNewsAddition={handleNewsAddition}/>
         <NewsList newsList={newsList}/>
       </div>
     </>
