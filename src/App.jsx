@@ -8,25 +8,16 @@ import Header from './components/Header';
 import './App.css';
 import axios from 'axios';
 
-const App = () =>{
-  const [newsList, setNews] = useState([
-    {
-      id: "1",
-      title: "Teste"
-    },
-    {
-      id: "2",
-      title: "Teste 2"
-    }
-  ]);
+const App = () => {
+  const [newsList, setNews] = useState([  ]);
 
   useEffect(() => {
-    const fetchTasks = async () => {
-      const {data} = await axios.get("http://localhost:5000/all");
+    const fetchNews = async () => {
+      const { data } = await axios.get("http://localhost:5000/all");
       setNews(data);
     }
 
-    fetchTasks();
+    fetchNews();
   }, []);
 
   // const handleNewsClick = (newsTitle) => {
@@ -36,9 +27,9 @@ const App = () =>{
   //   });
   // }
 
-  const handleNewsAddition = (newsTitle) => {
+  const handleNewsAddition = (newsTitle) => { // TODO: Arrumar
     const newNews = [
-      ... newsList,
+      ...newsList,
       {
         id: "5",
         title: newsTitle
@@ -49,7 +40,7 @@ const App = () =>{
   };
 
   const handleNewsDeletion = (newsTitle) => {
-    const newNews = newsList.filter(news => news.title != newsTitle)
+    const newNews = newsList.filter(news => news.title !== newsTitle)
 
     setNews(newNews);
   };
@@ -57,9 +48,9 @@ const App = () =>{
   return (
     <>
       <div className="container">
-        <Header/>
-        <AddNews handleNewsAddition={handleNewsAddition}/>
-        <NewsList newsList={newsList} handleNewsDeletion={handleNewsDeletion}/>
+        <Header />
+        <AddNews handleNewsAddition={handleNewsAddition} />
+        <NewsList newsList={newsList} handleNewsDeletion={handleNewsDeletion} />
       </div>
     </>
   );

@@ -9,6 +9,12 @@
     align-items: center;
 }
 
+.buttons-container{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .remove-news-button{
     background-color: #444;
     border: none;
