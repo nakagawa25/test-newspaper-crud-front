@@ -1,10 +1,25 @@
+import { useState } from 'react';
+import NewsList from './components/NewsList'
 import './App.css';
-import Home from './pages/Home';
+//import Home from './pages/Home';
 
-function App() {
+const App = () =>{
+  const [newsList, setTasks] = useState([
+    {
+      id: "1",
+      title: "Teste"
+    },
+    {
+      id: "2",
+      title: "Teste 2"
+    }
+  ]);
+
   return (
     <>
-    <Home />
+      <div className="container">
+        <NewsList newsList={newsList}/>
+      </div>
     </>
   );
 }
