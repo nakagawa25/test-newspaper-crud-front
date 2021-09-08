@@ -3,9 +3,14 @@
     margin: 8px 0;
     padding: 15px 20px;
     display: flex;
-    border-radius: 5px;
+    flex-direction: column;
+    border-radius: 5px; 
+    color: #eee;   
+}
+
+.header-container{
+    display: flex;
     justify-content: space-between;
-    color: #eee;
     align-items: center;
 }
 
@@ -13,6 +18,23 @@
     width: 30%;
     display: flex;
     justify-content: flex-end;
+}
+
+.content-container{
+    color: #eee;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content-container p{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+}
+
+.publication-date-container{
+    color: #eee;
 }
 
 .remove-news-button{

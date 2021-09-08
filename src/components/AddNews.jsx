@@ -17,6 +17,7 @@ const AddNews = ({handleNewsAddition}) => {
     return ( 
         <div className="add-news-container"> 
             <input
+                placeholder='Título da notícia'
                 onChange={handleInputChange}
                 value={inputData} 
                 className="add-news-input" 

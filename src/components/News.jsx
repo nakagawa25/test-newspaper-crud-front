@@ -1,14 +1,32 @@
 import './News.css'
 
-const News = ({news, handleNewsDeletion}) => {
+const News = ({ news, handleNewsDeletion }) => {
     return (
+
+
         <div className='news-container'>
-            {news.title}
-            <div className='buttons-container'>
-                <button className='remove-news-button' 
-                    onClick={() => handleNewsDeletion(news.title)}>X</button>
+
+            <div className='header-container'>
+                {news.title}
+                <div className='buttons-container'>
+                    <button className='remove-news-button'
+                        onClick={() => handleNewsDeletion(news.title)}>X</button>
+                </div>
+            </div>
+            <div>
+                <div className='content-container'>
+                    <p>{news.content}</p>
+                </div>
+
+                <div className='publication-date-container'>
+                    {news.publicationDate}
+                </div>
             </div>
         </div>
+
+
+
+
     );
 };
 

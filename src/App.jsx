@@ -6,14 +6,14 @@ import Header from './components/Header';
 //import Home from './pages/Home';
 
 import './App.css';
-import axios from 'axios';
+import api from './services/api'
 
 const App = () => {
   const [newsList, setNews] = useState([  ]);
 
   useEffect(() => {
     const fetchNews = async () => {
-      const { data } = await axios.get("http://localhost:5000/all");
+      const { data } = await api.get("/all");
       setNews(data);
     }
 
@@ -27,7 +27,7 @@ const App = () => {
   //   });
   // }
 
-  const handleNewsAddition = (newsTitle) => { // TODO: Arrumar
+  const handleNewsAddition = (newsTitle) => { // TODO: Arrumar para inserir o objeto
     const newNews = [
       ...newsList,
       {
@@ -40,8 +40,10 @@ const App = () => {
   };
 
   const handleNewsDeletion = (newsTitle) => {
-    const newNews = newsList.filter(news => news.title !== newsTitle)
 
+    // TODO: Mandar para a exclusão
+
+    const newNews = newsList.filter(news => news.title !== newsTitle)
     setNews(newNews);
   };
 
