@@ -3,48 +3,58 @@ import { useEffect, useState } from 'react';
 import NewsList from './components/NewsList'
 import AddNews from './components/AddNews';
 import Header from './components/Header';
-//import Home from './pages/Home';
 
 import './App.css';
 import api from './services/api'
 
 const App = () => {
-  const [newsList, setNews] = useState([  ]);
+  const [newsList, setNews] = useState([]);
+  const date = new Date();
 
   useEffect(() => {
     const fetchNews = async () => {
       const { data } = await api.get("/all");
       setNews(data);
-    }
+    };
 
     fetchNews();
   }, []);
 
-  // const handleNewsClick = (newsTitle) => {
-  //   const newNews = newsList.map((news) => {
-  //     if (news.title == newsTitle)
-  //       return {...news,}
-  //   });
-  // }
+  const addNews = async (newNewsObject) => {
+    try {
+      const newNews = [
+        ...newsList,
+        newNewsObject
+      ]
+      await api.post("/create", newNewsObject).then((response) => {
+        alert(response.data.message);
+        setNews(newNews);
+      });
+    } catch (err) {
+      alert("Não foi possível criar uma nova notícia, confira os campos e tente novamente. ");
+    }
+  };
 
-  const handleNewsAddition = (newsTitle) => { // TODO: Arrumar para inserir o objeto
-    const newNews = [
-      ...newsList,
-      {
-        id: "5",
-        title: newsTitle
-      }
-    ]
+  const delNews = async () => {
+    
+  }
 
-    setNews(newNews);
+  const handleNewsAddition = (newsTitle, newsContent) => {
+    const newNewsObject =
+    {
+      title: newsTitle,
+      content: newsContent,
+      publicationDate: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+    }
+
+    addNews(newNewsObject);
   };
 
   const handleNewsDeletion = (newsTitle) => {
-
-    // TODO: Mandar para a exclusão
-
-    const newNews = newsList.filter(news => news.title !== newsTitle)
-    setNews(newNews);
+    const newNews = newsList.filter(news => news.title !== newsTitle);
+    api.delete("/delete", { data: { title: newsTitle } }).then((response) => {
+      setNews(newNews);
+    });
   };
 
   return (

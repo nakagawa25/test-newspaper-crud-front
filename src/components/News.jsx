@@ -2,8 +2,6 @@ import './News.css'
 
 const News = ({ news, handleNewsDeletion }) => {
     return (
-
-
         <div className='news-container'>
 
             <div className='header-container'>
@@ -23,10 +21,6 @@ const News = ({ news, handleNewsDeletion }) => {
                 </div>
             </div>
         </div>
-
-
-
-
     );
 };
 
