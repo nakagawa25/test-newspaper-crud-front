@@ -26,8 +26,7 @@ const App = () => {
         ...newsList,
         newNewsObject
       ]
-      await api.post("/create", newNewsObject).then((response) => {
-        alert(response.data.message);
+      await api.post("/create", newNewsObject).then(() => {
         setNews(newNews);
       });
     } catch (err) {
@@ -35,9 +34,16 @@ const App = () => {
     }
   };
 
-  const delNews = async () => {
-    
-  }
+  const delNews = async (newsTitle) => {
+    try {
+      const newNews = newsList.filter(news => news.title !== newsTitle);
+      await api.delete("/delete", { data: { title: newsTitle } }).then(() => {
+        setNews(newNews);
+      });
+    } catch (err) {
+      alert("Não foi possível excluir a notícia.");
+    }
+  };
 
   const handleNewsAddition = (newsTitle, newsContent) => {
     const newNewsObject =
@@ -45,16 +51,13 @@ const App = () => {
       title: newsTitle,
       content: newsContent,
       publicationDate: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
-    }
+    };
 
     addNews(newNewsObject);
   };
 
   const handleNewsDeletion = (newsTitle) => {
-    const newNews = newsList.filter(news => news.title !== newsTitle);
-    api.delete("/delete", { data: { title: newsTitle } }).then((response) => {
-      setNews(newNews);
-    });
+    delNews(newsTitle);
   };
 
   return (
@@ -66,6 +69,6 @@ const App = () => {
       </div>
     </>
   );
-}
+};
 
 export default App;
