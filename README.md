@@ -16,7 +16,7 @@ Note: This repository contains only the front-end application, the back-end appl
 - [React js](https://pt-br.reactjs.org/)
 
 ## Running
-### API
+### Front-end
 1. Go to the root folder
 ```
 $ cd test-newspaper-crud-front
