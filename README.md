@@ -30,6 +30,6 @@ $ yarn start
 4. The API will run in **http://localhost:3000**.
 
 ### Demonstration
-This is the application UI
+This is the application UI.
 
 ![](news_gif.gif)
