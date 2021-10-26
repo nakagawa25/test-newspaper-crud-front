@@ -15,7 +15,7 @@ Note: This repository contains only the front-end application, the back-end appl
 - [Axios](https://axios-http.com/)
 - [React js](https://pt-br.reactjs.org/)
 
-## Running
+## 🚀 Running
 ### Front-end
 1. Go to the root folder
 ```
@@ -29,7 +29,8 @@ $ yarn start
 
 4. The API will run in **http://localhost:3000**.
 
-### Demonstration
+## :computer: Demonstration
 This is the application UI.
-
-![](news_gif.gif)
+<h1 align='center'>
+  <img  src="news_gif.gif"/>
+</h1>
